@@ -58,7 +58,11 @@ if [[ ! -d /opt/nzbhydra ]]; then msg_error "No ${APP} Installation Found!"; exi
 msg_info "Updating $APP"
 systemctl stop nzbhydra.service
 RELEASE=$(curl -s https://api.github.com/repos/theotherp/nzbhydra2/releases/latest | grep "tag_name" | awk '{print substr($2, 2, length($2)-3) }')
-tar zxvf <(curl -fsSL https://github.com/theotherp/nzbhydra2/releases/download/$RELEASE/nzbhydra-${RELEASE}.tar.gz) &>/dev/null
+unzip <(curl -fsSL https://github.com/theotherp/nzbhydra2/releases/download/v6.0.0/nzbhydra2-6.0.0-amd64-linux.zip) -d /opt/nzbhydra2 &>/dev/null
+\cp -r nzbhydra2-6.0.0-amd64-linux/* /opt/nzbhydra &>/dev/null
+rm -rf nzbhydra2-6.0.0-amd64-linux
+cd /opt/sabnzbd
+systemctl start nzbhydra.service
 msg_ok "Updated $APP"
 exit
 }
