@@ -54,11 +54,11 @@ function default_settings() {
 
 function update_script() {
 header_info
-if [[ ! -d /opt/nzbhydra2 ]]; then msg_error "No ${APP} Installation Found!"; exit; fi
+if [[ ! -d /opt/nzbhydra ]]; then msg_error "No ${APP} Installation Found!"; exit; fi
 msg_info "Updating $APP"
-systemctl stop nzbhydra2.service
+systemctl stop nzbhydra.service
 RELEASE=$(curl -s https://api.github.com/repos/theotherp/nzbhydra2/releases/latest | grep "tag_name" | awk '{print substr($2, 2, length($2)-3) }')
-tar zxvf <(curl -fsSL https://github.com/theotherp/nzbhydra2/releases/download/$RELEASE/nzbhydra2-${RELEASE}.tar.gz) &>/dev/null
+tar zxvf <(curl -fsSL https://github.com/theotherp/nzbhydra2/releases/download/$RELEASE/nzbhydra-${RELEASE}.tar.gz) &>/dev/null
 msg_ok "Updated $APP"
 exit
 }
