@@ -28,7 +28,7 @@ $STD apt-get install -y \
 $STD apt-get install -y python3-setuptools
 msg_ok "Updated Python3"
 
-msg_info "Installing NZBHydra2"
+msg_info "Installing NZBHydra"
 $STD unzip <(curl -fsSL https://github.com/theotherp/nzbhydra2/releases/download/v6.0.0/nzbhydra2-6.0.0-amd64-linux.zip) -d /opt/nzbhydra2
 msg_ok "Installed NZBHydra2"
 
